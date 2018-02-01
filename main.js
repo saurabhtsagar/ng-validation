@@ -62,15 +62,31 @@ myApp.config(function ($stateProvider) {
                         // ctrl.$setViewValue(digits);
                         // ctrl.$render();
                     }
-                    else{
+                    else {
                         console.log($(element).siblings("#controlError").html(""));
                     }
                     return parseFloat(digits);
                 }
-                console.log($(element).siblings("#controlError").html(""));                
+                console.log($(element).siblings("#controlError").html(""));
                 return undefined;
             }
             ctrl.$parsers.push(inputValue);
         }
     }
-});
+}).directive('validateEmail', function() {
+    var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
+    return {
+      link: function(scope, element) {
+        element.on("keyup",function(){
+              var isMatchRegex = EMAIL_REGEXP.test(element.val());
+              if( isMatchRegex&& element.hasClass('warning') || element.val() == ''){
+                element.removeClass('warning');
+                console.log($(element).siblings("#controlError").html(""));
+              }else if(isMatchRegex == false && !element.hasClass('warning')){
+                element.addClass('warning');
+                console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Invalid email !!</i>"));
+              }
+        });
+      }
+    }
+  });

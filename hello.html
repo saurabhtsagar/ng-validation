@@ -4,16 +4,23 @@
         <form id="demoForm" name="demoForm" ng-submit="submitForm()">
             <div class="form-group">
                 <label for="age">Age</label>
-                <input only-digits ng-model="myage" name="myage" type="text" class="form-control" id="age" required>
+                <input only-digits ng-model="myage" name="myage" type="text" class="form-control" id="age" autocomplete="off" required>
                 <span id="controlError" style="color:rgb(230, 72, 72);"></span>
             </div>
 
             <div class="form-group">
                 <label for="age">Percent</label>
-                <input only-digits-decimal ng-model="per" name="per" type="text" class="form-control" id="per" required>
+                <input only-digits-decimal ng-model="per" name="per" type="text" class="form-control" id="per" autocomplete="off" required>
                 <span id="controlError" style="color:rgb(230, 72, 72);"></span>
             </div>
 
+            <div class="form-group">
+                <label for="age">Email</label>
+                <input validate-email ng-model="email" name="email" type="email" class="form-control" id="email" autocomplete="off" required>
+                <span id="controlError" style="color:rgb(230, 72, 72);"></span>
+            </div>
+
+            
             <button type="submit" class="btn btn-success">Submit</button>
         </form>
     </fieldset>
