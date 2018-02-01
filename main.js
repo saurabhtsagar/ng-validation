@@ -32,17 +32,42 @@ myApp.config(function ($stateProvider) {
                 if (val) {
                     var digits = val.replace(/[^0-9]/g, '');
                     if (digits !== val) {
-                        console.log($(element).siblings("#myerror").html("<i class='fa fa-exclamation-triangle'> Digits only !!</i>"));
+                        console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Digits only !!</i>"));
                         // ctrl.$setViewValue(digits);
                         // ctrl.$render();
                     }
                     else {
-                        console.log($(element).siblings("#myerror").html(""));
+                        console.log($(element).siblings("#controlError").html(""));
                     }
                     return parseInt(digits, 10);
                 }
 
-                console.log($(element).siblings("#myerror").html(""));
+                console.log($(element).siblings("#controlError").html(""));
+                return undefined;
+            }
+            ctrl.$parsers.push(inputValue);
+        }
+    }
+}).directive('onlyDigitsDecimal', function () {
+    return {
+        require: 'ngModel',
+        restrict: 'A',
+        link: function (scope, element, attr, ctrl) {
+            function inputValue(val) {
+                if (val) {
+                    var digits = val.replace(/[^0-9.]/g, '');
+
+                    if (digits !== val) {
+                        console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Digits Decimal only !!</i>"));
+                        // ctrl.$setViewValue(digits);
+                        // ctrl.$render();
+                    }
+                    else{
+                        console.log($(element).siblings("#controlError").html(""));
+                    }
+                    return parseFloat(digits);
+                }
+                console.log($(element).siblings("#controlError").html(""));                
                 return undefined;
             }
             ctrl.$parsers.push(inputValue);

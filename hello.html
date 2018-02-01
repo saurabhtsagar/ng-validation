@@ -3,9 +3,15 @@
         <legend>Form Demo</legend>
         <form id="demoForm" name="demoForm" ng-submit="submitForm()">
             <div class="form-group">
-                <label for="age">Name</label>
+                <label for="age">Age</label>
                 <input only-digits ng-model="myage" name="myage" type="text" class="form-control" id="age" required>
-                <span id="myerror" style="color:rgb(230, 72, 72);"></span>
+                <span id="controlError" style="color:rgb(230, 72, 72);"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="age">Percent</label>
+                <input only-digits-decimal ng-model="per" name="per" type="text" class="form-control" id="per" required>
+                <span id="controlError" style="color:rgb(230, 72, 72);"></span>
             </div>
 
             <button type="submit" class="btn btn-success">Submit</button>
