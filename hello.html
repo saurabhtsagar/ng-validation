@@ -26,6 +26,21 @@
                 <div id="controlError" style="color:rgb(230, 72, 72);"></div>
             </div>
 
+            <div class="form-group">
+                <label for="min">Gender</label>
+                <input type="radio" name="gender" ng-model="gender" value="male" required/> : MALE
+                <input type="radio" name="gender" ng-model="gender" value="female" required/> : FEMALE
+
+                <!-- <div id="controlError" style="color:rgb(230, 72, 72);">{{ gender ? "" : "PLease Select a gender" }}</div> -->
+            </div>
+
+            
+            <div class="form-group">
+                <label for="min">isHuman</label>
+                <input type="checkbox" ng-model="captcha"name="vehicle1" value="Bike" required>
+
+                <!-- <div id="controlError" style="color:rgb(230, 72, 72);">{{ !captcha ? "" : "PLease Select a gender" }}</div> -->
+            </div>
             
             <button type="submit" class="btn btn-success">Submit</button>
         </form>

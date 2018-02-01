@@ -82,7 +82,7 @@ myApp.config(function ($stateProvider) {
                 var isMatchRegex = EMAIL_REGEXP.test(element.val());
                 if (isMatchRegex && element.hasClass('warning') || element.val() == '') {
                     element.removeClass('warning');
-                   // console.log($(element).siblings("#controlError").html(""));
+                   $(element).siblings("#controlError").html("");
                 } else if (isMatchRegex == false && !element.hasClass('warning')) {
                     element.addClass('warning');
                     console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Invalid email !!</i>"));
