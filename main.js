@@ -73,20 +73,38 @@ myApp.config(function ($stateProvider) {
             ctrl.$parsers.push(inputValue);
         }
     }
-}).directive('validateEmail', function() {
+}).directive('validateEmail', function () {
     var EMAIL_REGEXP = /^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/;
     return {
-      link: function(scope, element) {
-        element.on("keyup",function(){
-              var isMatchRegex = EMAIL_REGEXP.test(element.val());
-              if( isMatchRegex&& element.hasClass('warning') || element.val() == ''){
-                element.removeClass('warning');
-                console.log($(element).siblings("#controlError").html(""));
-              }else if(isMatchRegex == false && !element.hasClass('warning')){
-                element.addClass('warning');
-                console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Invalid email !!</i>"));
-              }
-        });
-      }
+        require: 'ngModel',
+        link: function (scope, element) {
+            element.on("keyup", function () {
+                var isMatchRegex = EMAIL_REGEXP.test(element.val());
+                if (isMatchRegex && element.hasClass('warning') || element.val() == '') {
+                    element.removeClass('warning');
+                    console.log($(element).siblings("#controlError").html(""));
+                } else if (isMatchRegex == false && !element.hasClass('warning')) {
+                    element.addClass('warning');
+                    console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Invalid email !!</i>"));
+                }
+            });
+        }
     }
-  });
+}).directive('minLength', function () {  
+    return {
+        require: 'ngModel',
+        link: function (scope, element, attr, ngModel, ctrl) {
+            element.on("keyup", function () {
+                if (l = ngModel.$viewValue.length < parseInt(attr.minLength))
+                {
+                    console.log("Minimun char Limit is : 2");
+                    console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Minimun char Limit is : 2 </i>"));
+                }
+                else{
+                    console.log("Valid Input !!");    
+                    console.log($(element).siblings("#controlError").html(""));
+                }
+            });
+        }
+    }
+})
