@@ -32,17 +32,20 @@ myApp.config(function ($stateProvider) {
                 if (val) {
                     var digits = val.replace(/[^0-9]/g, '');
                     if (digits !== val) {
-                        console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Digits only !!</i>"));
+                        angular.element(element).css("border-color","red");
+                        console.log(angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'><span id='errorText'> Digits only !! </span></i>"));
                         // ctrl.$setViewValue(digits);
                         // ctrl.$render();
                     }
                     else {
-                        console.log($(element).siblings("#controlError").html(""));
+                        console.log(angular.element(element).siblings("#controlError").html(""));
+                        angular.element(element).css("border-color","");
                     }
                     return parseInt(digits, 10);
                 }
 
-                console.log($(element).siblings("#controlError").html(""));
+                console.log(angular.element(element).siblings("#controlError").html(""));
+                angular.element(element).css("border-color","");
                 return undefined;
             }
             ctrl.$parsers.push(inputValue);
@@ -58,16 +61,16 @@ myApp.config(function ($stateProvider) {
                     var digits = val.replace(/[^0-9.]/g, '');
 
                     if (digits !== val) {
-                        console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Digits Decimal only !!</i>"));
+                        console.log(angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> <span id='errorText'> Digits Decimal only !!<span></i>"));
                         // ctrl.$setViewValue(digits);
                         // ctrl.$render();
                     }
                     else {
-                        console.log($(element).siblings("#controlError").html(""));
+                        console.log(angular.element(element).siblings("#controlError").html(""));
                     }
                     return parseFloat(digits);
                 }
-                console.log($(element).siblings("#controlError").html(""));
+                console.log(angular.element(element).siblings("#controlError").html(""));
                 return undefined;
             }
             ctrl.$parsers.push(inputValue);
@@ -82,10 +85,10 @@ myApp.config(function ($stateProvider) {
                 var isMatchRegex = EMAIL_REGEXP.test(element.val());
                 if (isMatchRegex && element.hasClass('warning') || element.val() == '') {
                     element.removeClass('warning');
-                   $(element).siblings("#controlError").html("");
+                   angular.element(element).siblings("#controlError").html("");
                 } else if (isMatchRegex == false && !element.hasClass('warning')) {
                     element.addClass('warning');
-                    console.log($(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Invalid email !!</i>"));
+                    console.log(angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> <span id='errorText'>Invalid email !! </span></i>"));
                 }
             });
         }
@@ -101,12 +104,12 @@ myApp.config(function ($stateProvider) {
             element.on("keyup", function () {
                 if (ngModel.$viewValue.length < parseInt(attr.minLength)) {
                     console.log("Minimun char Limit is : 2");
-                    $(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> min char Limit is : 2 </i>");
+                    angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> <span id='errorText'> min char Limit is : 2 </span></i>");
 
                 }
                 else {
                     //console.log("Valid Input !!");
-                    $(element).siblings("#controlError").html("");
+                    angular.element(element).siblings("#controlError").html("");
 
                 }
             });
@@ -121,11 +124,11 @@ myApp.config(function ($stateProvider) {
             element.on("keyup", function () {
                 if (ngModel.$viewValue.length > parseInt(attr.maxLength)) {
                     console.log("Maximum char Limit is : 5");
-                    $(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> Maximum char Limit is : 5 </i>");
+                    angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> <span id='errorText'>Maximum char Limit is : 5 <span></i>");
                 }
                 else {
                     //console.log("Valid Input !!");
-                    //$(element).siblings("#controlError").html("");
+                    //angular.element(element).siblings("#controlError").html("");
                 }
             });
 
