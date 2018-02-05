@@ -22,18 +22,25 @@ myApp.config(function ($stateProvider) {
 
 
     }
+    
 
     $scope.latlng = [18.5204, 73.8567];
+    $scope.mapPopover = {
+        content: 'Hello, World!',
+        templateUrl: 'mapPopoverTemplate.html',
+        title: "Selection :"+$scope.latlng
+    };
+    $scope.lat = $scope.latlng[0];
+    $scope.long = $scope.latlng[1];
 
-    $scope.lat=$scope.latlng[0];
-    $scope.long=$scope.latlng[1];    
-    
     $scope.getpos = function (event) {
         $scope.latlng = [event.latLng.lat(), event.latLng.lng()];
-        $scope.lat=$scope.latlng[0];
-        $scope.long=$scope.latlng[1];   
+        $scope.lat = $scope.latlng[0];
+        $scope.long = $scope.latlng[1];
+        $scope.mapPopover.title="Selection :"+$scope.latlng;
     };
-    
+
+
 
 }).directive('onlyDigits', function () {
     return {
