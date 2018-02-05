@@ -56,6 +56,10 @@
 
     <script src="main.js"></script>
 
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.3/angular-sanitize.min.js"></script>
+    <script src="https://rawgit.com/allenhwkim/angularjs-google-maps/master/build/scripts/ng-map.js"></script>
+
     <style>
         body {
             font-family: 'Raleway', sans-serif !important;
@@ -65,7 +69,7 @@
             font-family: "Helvetica Neue",
         }
 
-        #errorText{
+        #errorText {
             font-family: 'Raleway', sans-serif !important;
         }
 
@@ -96,7 +100,7 @@
     <div class="container-fluid">
         <ui-view></ui-view>
     </div>
-    
+
 </body>
 
 </html>

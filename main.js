@@ -1,4 +1,4 @@
-var myApp = angular.module('helloworld', ['ui.bootstrap', 'ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.exporter',
+var myApp = angular.module('helloworld', ['ui.bootstrap', 'ngMap', 'ui.router', 'ui.grid', 'ui.grid.resizeColumns', 'ui.grid.moveColumns', 'ui.grid.exporter',
     'ui.grid.selection',
     'isteven-multi-select',
     'ripplerModule',
@@ -19,7 +19,21 @@ myApp.config(function ($stateProvider) {
     $scope.submitForm = function () {
 
         alert("Submitting form !!!");
+
+
     }
+
+    $scope.latlng = [18.5204, 73.8567];
+
+    $scope.lat=$scope.latlng[0];
+    $scope.long=$scope.latlng[1];    
+    
+    $scope.getpos = function (event) {
+        $scope.latlng = [event.latLng.lat(), event.latLng.lng()];
+        $scope.lat=$scope.latlng[0];
+        $scope.long=$scope.latlng[1];   
+    };
+    
 
 }).directive('onlyDigits', function () {
     return {
@@ -32,20 +46,20 @@ myApp.config(function ($stateProvider) {
                 if (val) {
                     var digits = val.replace(/[^0-9]/g, '');
                     if (digits !== val) {
-                        angular.element(element).css("border-color","red");
+                        angular.element(element).css("border-color", "red");
                         console.log(angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'><span id='errorText'> Digits only !! </span></i>"));
                         // ctrl.$setViewValue(digits);
                         // ctrl.$render();
                     }
                     else {
                         console.log(angular.element(element).siblings("#controlError").html(""));
-                        angular.element(element).css("border-color","");
+                        angular.element(element).css("border-color", "");
                     }
                     return parseInt(digits, 10);
                 }
 
                 console.log(angular.element(element).siblings("#controlError").html(""));
-                angular.element(element).css("border-color","");
+                angular.element(element).css("border-color", "");
                 return undefined;
             }
             ctrl.$parsers.push(inputValue);
@@ -85,7 +99,7 @@ myApp.config(function ($stateProvider) {
                 var isMatchRegex = EMAIL_REGEXP.test(element.val());
                 if (isMatchRegex && element.hasClass('warning') || element.val() == '') {
                     element.removeClass('warning');
-                   angular.element(element).siblings("#controlError").html("");
+                    angular.element(element).siblings("#controlError").html("");
                 } else if (isMatchRegex == false && !element.hasClass('warning')) {
                     element.addClass('warning');
                     console.log(angular.element(element).siblings("#controlError").html("<i class='fa fa-exclamation-triangle'> <span id='errorText'>Invalid email !! </span></i>"));
@@ -119,7 +133,7 @@ myApp.config(function ($stateProvider) {
 }).directive('maxLength', function () {
     return {
         require: 'ngModel',
-        restrict: 'A',        
+        restrict: 'A',
         link: function (scope, element, attr, ngModel, ctrl) {
             element.on("keyup", function () {
                 if (ngModel.$viewValue.length > parseInt(attr.maxLength)) {
