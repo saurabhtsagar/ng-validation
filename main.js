@@ -16,25 +16,25 @@ myApp.config(function ($stateProvider) {
     $stateProvider.state(helloState);
 }).controller('helloController', function ($scope, $rootScope, $q, $timeout, $interval, $http, uiGridConstants) {
 
-    // $scope.submitForm = function () {
-    //     alert("Submitting form !!!");
-    // }
+    $scope.submitForm = function () {
+        alert("Submitting form !!!");
+    }
 
-    // $scope.latlng = [18.5204, 73.8567];
-    // $scope.mapPopover = {
-    //     content: 'Hello, World!',
-    //     templateUrl: 'mapPopoverTemplate.html',
-    //     title: "Selection :"+$scope.latlng
-    // };
-    // $scope.lat = $scope.latlng[0].toFixed(8);;
-    // $scope.long = $scope.latlng[1].toFixed(8);;
+    $scope.latlng = [18.5204, 73.8567];
+    $scope.mapPopover = {
+        content: 'Hello, World!',
+        templateUrl: 'mapPopoverTemplate.html',
+        title: "Selection :"+$scope.latlng
+    };
+    $scope.lat = $scope.latlng[0].toFixed(8);;
+    $scope.long = $scope.latlng[1].toFixed(8);;
 
-    // $scope.getpos = function (event) {
-    //     $scope.latlng = [event.latLng.lat(), event.latLng.lng()];
-    //     $scope.lat = $scope.latlng[0].toFixed(8);
-    //     $scope.long = $scope.latlng[1].toFixed(8);
-    //     $scope.mapPopover.title="Selection :"+$scope.lat+","+$scope.long;
-    // };
+    $scope.getpos = function (event) {
+        $scope.latlng = [event.latLng.lat(), event.latLng.lng()];
+        $scope.lat = $scope.latlng[0].toFixed(8);
+        $scope.long = $scope.latlng[1].toFixed(8);
+        $scope.mapPopover.title="Selection :"+$scope.lat+","+$scope.long;
+    };
 
     $scope.users =
         [
@@ -240,13 +240,12 @@ myApp.config(function ($stateProvider) {
             }
         ];
 
-
     var linq = Enumerable;
-    var obj= linq.from($scope.users).where(function (x, index) {
-        if(x.age == 40)
+    var obj= linq.from($scope.users).where(function (obj, index) {
+        if(obj.age == 40)
         {
-            console.log(x);
-            return x;
+            console.log(obj);
+            return obj;
         }
     }).toArray();
 
