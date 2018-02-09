@@ -12,9 +12,21 @@ myApp.config(function ($stateProvider) {
         controller: "helloController"
     }
 
+    var aboutState = {
+        name: 'about',
+        url: '/about',
+        templateUrl: 'about.html',
+        controller: "aboutController"
+    }
 
+    $stateProvider.state(aboutState);
     $stateProvider.state(helloState);
-}).controller('helloController', function ($scope, $rootScope, $q, $timeout, $interval, $http, uiGridConstants) {
+}).controller('aboutController', function ($scope){
+    particlesJS.load('particles-js', 'lib/particles/particles.json', function() {
+        console.log('callback - particles.js config loaded');
+      });
+})
+.controller('helloController', function ($scope, $rootScope, $q, $timeout, $interval, $http, uiGridConstants) {
 
     $scope.submitForm = function () {
         alert("Submitting form !!!");
