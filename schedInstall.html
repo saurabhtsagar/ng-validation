@@ -1,0 +1,92 @@
+<div id="scheduledInstallment_container" class="animated fadeIn">
+  <div class="row mygrid">
+    <div class="col-md-12">
+      <div class="card" ng-init="addSchedInstallmentFlag = true">        
+
+        <div class="card-header">
+          <i class="fa" ng-class="addSchedInstallmentFlag ? 'fa-plus':'fa-pencil'"></i> {{addSchedInstallmentFlag ? 'ADD ' : 'EDIT board'}}
+        </div>
+
+        <div class="card-body">
+          <form class="form-inline row">
+            <div class="form-group">
+              <label for="scheduledInstallment_date">NAME</label>
+              <input type="date" ng-model="scheduledInstallment_date" class="form-control" id="scheduledInstallment_date" placeholder="Scheduled Installmentount Date">
+            </div>  
+
+            <div class="form-group">
+              <label for="scheduledInstallment_amt">NAME</label>
+              <input type="text" ng-model="scheduledInstallmentAmt" class="form-control" id="scheduledInstallment_amt" placeholder="Scheduled Installment Amount">
+            </div> 
+
+            <button type="submit" class="btn btn-primary"><i class="fa fa-dot-circle-o"></i> Submit</button>
+            <button type="reset" class="btn btn-danger"><i class="fa fa-ban"></i> Reset</button>
+           
+          </form>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <i class="fa fa-align-justify"></i> Simple Table
+        </div>
+        <div class="card-body">
+          <table class="table table-responsive-sm">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Date registered</th>
+                <th>Role</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Samppa Nori</td>
+                <td>2012/01/01</td>
+                <td>Member</td>
+                <td>
+                  <span class="badge badge-success">Active</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Estavan Lykos</td>
+                <td>2012/02/01</td>
+                <td>Staff</td>
+                <td>
+                  <span class="badge badge-danger">Banned</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Chetan Mohamed</td>
+                <td>2012/02/01</td>
+                <td>Admin</td>
+                <td>
+                  <span class="badge badge-secondary">Inactive</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Derick Maximinus</td>
+                <td>2012/03/01</td>
+                <td>Member</td>
+                <td>
+                  <span class="badge badge-warning">Pending</span>
+                </td>
+              </tr>
+              <tr>
+                <td>Friderik Dávid</td>
+                <td>2012/01/21</td>
+                <td>Staff</td>
+                <td>
+                  <span class="badge badge-success">Active</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
