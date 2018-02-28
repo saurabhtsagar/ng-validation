@@ -31,7 +31,7 @@ myApp.config(function ($stateProvider) {
         $scope.submitForm = function () {
             alert("Submitting form !!!");
         }
-        
+
         /*update using underscore.js */
         var nameInfo = [{ name: "Moroni", age: 50 },
         { name: "Tiancum", age: 43 },
@@ -49,6 +49,27 @@ myApp.config(function ($stateProvider) {
 
         alert(JSON.stringify(nameInfo));
         /*update using underscore.js */
+
+        /* Delete using underscorejs*/
+        var arr = [{
+            id: 1,
+            name: 'a'
+        }, {
+            id: 2,
+            name: 'b'
+        }, {
+            id: 3,
+            name: 'c'
+        }];
+
+        //substract third
+        arr = _.without(arr, _.findWhere(arr, {
+            id: 3
+        }));
+        
+        console.log(arr);
+
+       /* Delete using underscorejs*/
 
         $scope.latlng = [18.5204, 73.8567];
         $scope.mapPopover = {
