@@ -47,30 +47,6 @@ myApp.config(function ($stateProvider) {
             }
         });
 
-        alert(JSON.stringify(nameInfo));
-        /*update using underscore.js */
-
-        /* Delete using underscorejs*/
-        var arr = [{
-            id: 1,
-            name: 'a'
-        }, {
-            id: 2,
-            name: 'b'
-        }, {
-            id: 3,
-            name: 'c'
-        }];
-
-        //substract third
-        arr = _.without(arr, _.findWhere(arr, {
-            id: 3
-        }));
-        
-        console.log(arr);
-
-       /* Delete using underscorejs*/
-
         $scope.latlng = [18.5204, 73.8567];
         $scope.mapPopover = {
             content: 'Hello, World!',
@@ -298,6 +274,28 @@ myApp.config(function ($stateProvider) {
                 return obj;
             }
         }).toArray();
+
+
+
+        /*Bootsrap wizard*/
+        $scope.nextStep = function (id) {
+            angular.element('.step' + (id - 1)).removeClass('active');
+            angular.element('.step' + (id)).addClass('active');
+        }
+
+        $scope.prevStep = function (id) {
+            angular.element('.step' + (id)).removeClass('active');
+            angular.element('.step' + (id - 1)).addClass('active');
+        }
+
+        $scope.resetSteps = function () {
+            angular.element('.step1').addClass('active');
+            angular.element('.step1').siblings().removeClass('active');
+
+            angular.element('#step1').addClass('active');
+            angular.element('#step1').siblings().removeClass('active');
+        }
+        /*Bootstrap wizard*/
 
 
 
